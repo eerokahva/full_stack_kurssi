@@ -1,4 +1,4 @@
-# hello-world
-Testing
+# Helsingin yliopistion full stack web development kurssi
 
-Asdadasd im just practicing to be the best!
+ Kursin tehtäväpalautus repo
+ Kurssi löytyy https://fullstackopen-2019.github.io/about
