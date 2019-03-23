@@ -1,4 +1,5 @@
-# hello-world
-Testing
+## Full stack web development kurssi
 
-Asdadasd im just practicing to be the best!
+ Kursin tehtäväpalautus repo
+ <br>
+ Kurssi löytyy https://fullstackopen-2019.github.io/about
