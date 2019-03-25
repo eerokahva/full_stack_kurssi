@@ -27,6 +27,8 @@ const Content = (props) => {
     )
 }
 
+//TESTI
+
 const Total =(props) => {
     return(
         <div>
