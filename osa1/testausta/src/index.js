@@ -3,24 +3,33 @@ import ReactDOM from 'react-dom';
 
 //Jatka kohdasta: Osa1, Komponentil tila ja tapahtumankäsittely, Tapahtumankäsittelijä on funktio
 
+const Display =({ counter}) => <div>{counter}</div>
+
+const Button = ({handleClick, text }) => (
+  <button onClick = {handleClick}>
+    {text}
+  </button>
+)
+
 const App = (props) => {
     const [counter, setCounter] = useState(0)
-
-    const increaseByOne = () =>
-      setCounter(counter + 1)
-
-    const setToZero = () =>
-      setCounter(0)
+    const setToValue = (value) => setCounter(value)
 
     return (
       <div>
-        <div>{counter}</div>
-        <button onClick={increaseByOne}>
-          plus
-        </button>
-        <button onClick={setToZero}>
-          zero
-        </button>
+        <Display counter={counter}/>
+        <Button 
+          handleClick={() => setToValue(counter + 1)}
+          text ="plus"
+        />
+        <Button
+          handleClick={() => setToValue(counter - 1)}
+          text="minus"
+        />
+        <Button
+          handleClick={() => setToValue(0)}
+          text = "zero"
+        />
       </div>
     )
   }
