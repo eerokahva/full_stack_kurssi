@@ -1,38 +1,56 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-//Jatka kohdasta: Osa1, Komponentil tila ja tapahtumankäsittely, Tapahtumankäsittelijä on funktio
+//Jatka kohdasta: Osa1, D, Tapahtumakäsittely revisited
 
-const Display =({ counter}) => <div>{counter}</div>
+const History = (props) => {
+  if (props.allClicks.length === 0) {
+    return (
+      <div>
+        Sovellusta käytetään nappeja painelemalla
+      </div>
+    )
+  }
+  return(
+    <div>
+      Näppäilyhistoria: {props.allClicks.join(" ")}
+    </div>
+  )
+}
 
-const Button = ({handleClick, text }) => (
-  <button onClick = {handleClick}>
+const Button = ({handleClick, text}) => (
+  <button onClick={handleClick}>
     {text}
   </button>
 )
 
 const App = (props) => {
-    const [counter, setCounter] = useState(0)
-    const setToValue = (value) => setCounter(value)
+  const [left, setLeft] = useState(0)
+  const [right, setRight] = useState(0)
+  const [allClicks, setAll] = useState([])
 
-    return (
-      <div>
-        <Display counter={counter}/>
-        <Button 
-          handleClick={() => setToValue(counter + 1)}
-          text ="plus"
-        />
-        <Button
-          handleClick={() => setToValue(counter - 1)}
-          text="minus"
-        />
-        <Button
-          handleClick={() => setToValue(0)}
-          text = "zero"
-        />
-      </div>
-    )
+  const handleLeftClick = () => {
+    setAll(allClicks.concat("L"))
+    setLeft(left + 1)
   }
+  
+  const handleRightClick = () => {
+    setAll(allClicks.concat("R"))
+    setRight(right + 1)
+  }
+    
+  return (
+    <div>
+      <div>
+        {left}
+        <Button handleClick = {handleLeftClick} text="vasen" />
+        <Button handleClick = {handleRightClick} text = "oikea" />
+        {right}
+        <History allClicks={allClicks} />
+      </div>
+    </div>
+  )
+}
 
 
 ReactDOM.render(
