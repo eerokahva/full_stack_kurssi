@@ -1,33 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-//Jatka kohdasta: 
+//Jatka kohdasta: Osa1, Komponentil tila ja tapahtumankäsittely, Tapahtumankäsittelijä on funktio
 
-const Hello = (props) => {
-    const {name, age} = props
+const App = (props) => {
+    const [counter, setCounter] = useState(0)
 
-    const bornYear = () => new Date().getFullYear() - age
+    const increaseByOne = () =>
+      setCounter(counter + 1)
 
-    return(
-        <div>
-            <p> Hello {name}, you are {age} years old</p>
-            <p>So you were probably born {bornYear()}</p>
-        </div>
-    )
-}
+    const setToZero = () =>
+      setCounter(0)
 
-const App = () => {
-    const nimi = 'Pekka'
-    const ika = 10
-  
     return (
       <div>
-        <h1>Greetings</h1>
-        <Hello name="Arto" age={26 + 10} />
-        <Hello name={nimi} age={ika} />
+        <div>{counter}</div>
+        <button onClick={increaseByOne}>
+          plus
+        </button>
+        <button onClick={setToZero}>
+          zero
+        </button>
       </div>
     )
   }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+)
+
+
+
+
 
