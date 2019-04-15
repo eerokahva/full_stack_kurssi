@@ -26,6 +26,8 @@ const Stats = (props) => {
   )
 }
 
+//Nähtävästi tein suoraan osa3 haluammalla tavalla
+
 const Button =({handleClick, teksti}) => (
   <button onClick = {handleClick}>
     {teksti}
