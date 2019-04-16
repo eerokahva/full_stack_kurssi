@@ -1,16 +1,11 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-const App = (props) => {
-  let arvo = Math.floor((Math.random() * 6))
-  const [selected, setSelected] = useState(arvo)
-
-  return (
-    <div>
-      {props.anecdotes[selected]}
-    </div>
-  )
-}
+const Button =({handleClick, text}) => (
+  <button onClick = {handleClick}>
+    {text}
+  </button>
+)
 
 const anecdotes = [
   'If it hurts, do it more often',
@@ -20,6 +15,23 @@ const anecdotes = [
   'Premature optimization is the root of all evil.',
   'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
 ]
+
+const App = (props) => {
+  const [selected, setSelected] = useState(Math.floor((Math.random() * 6)))
+
+  const generateRandom = () => {
+    setSelected(Math.floor((Math.random() * 6)))
+  }
+
+  return (
+    <div>
+      {props.anecdotes[selected]}<br></br>
+      <Button handleClick = {generateRandom} text="next anecdote" />
+    </div>
+  )
+}
+
+
 
 ReactDOM.render(
   <App anecdotes={anecdotes} />,
