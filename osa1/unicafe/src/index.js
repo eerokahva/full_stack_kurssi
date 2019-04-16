@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 
 const Stats = (props) => {
-  let keski = (props.hyva - props.paha )/ props.yht
-  let posi = (props.hyva / props.yht)*100
+  
   if (props.yht === 0) {
     return (
       <div>
@@ -11,20 +10,37 @@ const Stats = (props) => {
       </div>
     )
   }
-  
+
+  let keski = (props.hyva - props.paha )/ props.yht
+  let posi = (props.hyva / props.yht)*100
+
   return (
     <div>
-      Hyvä {props.hyva} <br></br>
-      Neutraali {props.neutraali} <br></br>
-      Huono {props.paha} <br></br>
-      Yhteensä {props.yht} <br></br>
-      Keskiarvo {keski} <br></br>
-      Positiivisia {posi}%
+      <table>
+        <tbody>
+        <tr>
+          <td>Hyvä</td><td>{props.hyva}</td>
+        </tr>
+        <tr>
+          <td>Neutraali</td><td>{props.neutraali}</td>
+        </tr>
+        <tr>
+          <td>Huono</td><td>{props.paha}</td>
+        </tr>
+        <tr>
+          <td>Yhteensä</td><td>{props.yht}</td>
+        </tr>
+        <tr>
+          <td>Keskiarvo</td><td>{keski}</td>
+        </tr>
+        <tr>
+          <td>Positiivisia</td><td>{posi}%</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   )
 }
-
-//Nähtävästi tein suoraan osa3 haluammalla tavalla
 
 const Button =({handleClick, teksti}) => (
   <button onClick = {handleClick}>
