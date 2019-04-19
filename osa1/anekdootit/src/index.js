@@ -7,6 +7,16 @@ const Button =({handleClick, text}) => (
   </button>
 )
 
+const Display = (props) => {
+  return (
+    <div>
+      has {props.pisteet} points.
+    </div>
+  )
+}
+
+let points = {0: 0, 1: 0, 2:0, 3:0, 4:0, 5:0}
+
 const anecdotes = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -23,15 +33,23 @@ const App = (props) => {
     setSelected(Math.floor((Math.random() * 6)))
   }
 
+  const updatePoints = () => {
+    const copy = {...points}
+    copy[selected] += 1
+    points = copy
+  }
+  
+  console.log(points)
+
   return (
     <div>
       {props.anecdotes[selected]}<br></br>
+      <Display pisteet = {points[selected]} />
+      <Button handleClick = {updatePoints} text = "vote" />
       <Button handleClick = {generateRandom} text="next anecdote" />
     </div>
   )
 }
-
-
 
 ReactDOM.render(
   <App anecdotes={anecdotes} />,
